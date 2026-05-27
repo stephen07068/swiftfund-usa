@@ -218,7 +218,7 @@ export default function ApplicationForm() {
               Application Submitted Successfully!
             </h2>
             <p className="text-lg text-gray-600 mb-4">
-              Thank you for choosing SwiftFund USA. We've received your application.
+              Thank you for choosing SwiftFund USA. We&apos;ve received your application.
             </p>
             <p className="text-gray-600">
               Redirecting you to WhatsApp...

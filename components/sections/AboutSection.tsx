@@ -13,7 +13,7 @@ export default function AboutSection() {
           Modernizing Lending Through Speed & Security
         </h2>
         <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-          At SwiftFund USA, we believe that accessing capital should be simple and secure. Founded on the principles of transparency and technological excellence, we've replaced antiquated banking processes with a streamlined digital experience. Our mission is to provide Americans with reliable financial support precisely when they need it, backed by robust data security and a commitment to fair lending.
+          At SwiftFund USA, we believe that accessing capital should be simple and secure. Founded on the principles of transparency and technological excellence, we&apos;ve replaced antiquated banking processes with a streamlined digital experience. Our mission is to provide Americans with reliable financial support precisely when they need it, backed by robust data security and a commitment to fair lending.
         </p>
       </div>
     </SectionWrapper>

@@ -25,7 +25,7 @@ export default function HeroSection() {
               <span className="text-green-600">Reliable</span>
             </h1>
             <p className="text-base text-gray-600 mb-8 max-w-md leading-relaxed">
-              Streamlined funding solutions for your personal and professional growth. Experience rapid decisions and transparent terms with SwiftFund USA's modern lending platform.
+              Streamlined funding solutions for your personal and professional growth. Experience rapid decisions and transparent terms with SwiftFund USA&apos;s modern lending platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
