@@ -55,7 +55,7 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={scrollToApply}
-                className="px-7 py-3.5 bg-zinc-900 text-white text-[14px] font-semibold rounded-lg hover:bg-zinc-800 active:bg-zinc-950 transition-all duration-150 shadow-sm"
+                className="px-7 py-3.5 bg-green-600 text-white text-[14px] font-semibold rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-150 shadow-sm"
               >
                 Apply Now
               </button>

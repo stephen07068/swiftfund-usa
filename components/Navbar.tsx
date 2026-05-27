@@ -64,7 +64,7 @@ export default function Navbar() {
             <div className="w-px h-5 bg-zinc-200 mx-2" />
             <button
               onClick={() => scrollToSection('apply')}
-              className="px-5 py-2 bg-zinc-900 text-white text-[13.5px] font-semibold rounded-lg hover:bg-zinc-800 active:bg-zinc-950 transition-all duration-150 shadow-sm"
+              className="px-5 py-2 bg-green-600 text-white text-[13.5px] font-semibold rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-150 shadow-sm"
             >
               Apply Now
             </button>
@@ -97,7 +97,7 @@ export default function Navbar() {
             <div className="pt-2 pb-1">
               <button
                 onClick={() => scrollToSection('apply')}
-                className="w-full px-4 py-3 bg-zinc-900 text-white text-[14px] font-semibold rounded-lg hover:bg-zinc-800 transition-all"
+                className="w-full px-4 py-3 bg-green-600 text-white text-[14px] font-semibold rounded-lg hover:bg-green-700 transition-all"
               >
                 Apply Now
               </button>

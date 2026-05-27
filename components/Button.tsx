@@ -23,7 +23,7 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950 shadow-sm disabled:opacity-50',
+      'bg-green-600 text-white hover:bg-green-700 active:bg-green-800 shadow-sm disabled:opacity-50',
     secondary:
       'bg-zinc-100 text-zinc-800 hover:bg-zinc-200 active:bg-zinc-300 disabled:opacity-50',
     outline:
