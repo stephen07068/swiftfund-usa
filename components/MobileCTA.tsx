@@ -1,35 +1,30 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Button from './Button';
 
 export default function MobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show CTA after scrolling 300px
-      setIsVisible(window.scrollY > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsVisible(window.scrollY > 300);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToApply = () => {
-    const element = document.getElementById('apply');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t shadow-lg p-4 animate-slide-up">
-      <Button onClick={scrollToApply} className="w-full" size="lg">
-        Apply Now
-      </Button>
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-zinc-200 px-4 py-3 animate-slide-up shadow-[0_-4px_24px_-4px_rgba(0,0,0,0.12)]">
+      <button
+        onClick={scrollToApply}
+        className="w-full py-3 bg-zinc-900 text-white text-[14px] font-semibold rounded-lg hover:bg-zinc-800 active:bg-zinc-950 transition-all duration-150"
+      >
+        Apply Now — Free &amp; No Credit Impact
+      </button>
     </div>
   );
 }

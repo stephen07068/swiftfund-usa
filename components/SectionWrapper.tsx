@@ -17,13 +17,13 @@ export default function SectionWrapper({
 }: SectionWrapperProps) {
   const backgrounds = {
     white: 'bg-white',
-    gray: 'bg-gray-50',
-    blue: 'bg-green-50',
+    gray:  'bg-zinc-50',
+    blue:  'bg-zinc-50',
   };
 
   return (
-    <section id={id} className={`${backgrounds[background]} py-16 md:py-24 ${className}`}>
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
+    <section id={id} className={`${backgrounds[background]} py-20 md:py-28 ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {children}
       </div>
     </section>

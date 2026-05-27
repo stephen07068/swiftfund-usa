@@ -2,109 +2,109 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import Button from './Button';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
   };
+
+  const navLinks = [
+    { label: 'Loans',        id: 'apply'        },
+    { label: 'Benefits',     id: 'benefits'     },
+    { label: 'How It Works', id: 'how-it-works' },
+    { label: 'About',        id: 'about'        },
+  ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-xl border-b border-zinc-200/80 shadow-[0_1px_8px_0_rgba(0,0,0,0.06)]'
+          : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 12L12 22L22 12L12 2Z" fill="#16a34a"/>
-            </svg>
-            <span className="text-lg font-bold tracking-tight">
-              <span className="text-gray-900">SwiftFund </span>
-              <span className="text-green-600">USA</span>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-[68px]">
+          {/* Logo */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2 group"
+          >
+            <div className="w-7 h-7 rounded-md bg-zinc-900 flex items-center justify-center shadow-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 12L12 22L22 12L12 2Z" fill="#22c55e" />
+              </svg>
+            </div>
+            <span className="text-[15px] font-bold tracking-tight text-zinc-900 leading-none">
+              SwiftFund<span className="text-green-600">USA</span>
             </span>
-          </div>
+          </button>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('apply')} className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium">
-              Loans
-            </button>
-            <button onClick={() => scrollToSection('benefits')} className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium">
-              Benefits
-            </button>
-            <button onClick={() => scrollToSection('how-it-works')} className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium">
-              How it Works
-            </button>
-            <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-green-600 transition-colors text-sm font-medium">
-              About Us
-            </button>
-            <button 
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="px-4 py-2 text-[13.5px] font-medium text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded-md transition-all duration-150"
+              >
+                {label}
+              </button>
+            ))}
+            <div className="w-px h-5 bg-zinc-200 mx-2" />
+            <button
               onClick={() => scrollToSection('apply')}
-              className="px-6 py-2.5 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all text-sm"
+              className="px-5 py-2 bg-zinc-900 text-white text-[13.5px] font-semibold rounded-lg hover:bg-zinc-800 active:bg-zinc-950 transition-all duration-150 shadow-sm"
             >
               Apply Now
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-700 hover:text-green-600"
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-md text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 transition-all"
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-zinc-100 shadow-lg animate-slide-down">
+          <div className="max-w-7xl mx-auto px-4 py-3 space-y-0.5">
+            {navLinks.map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="block w-full text-left px-4 py-3 text-[14px] font-medium text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 rounded-md transition-colors"
+              >
+                {label}
+              </button>
+            ))}
+            <div className="pt-2 pb-1">
               <button
                 onClick={() => scrollToSection('apply')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-green-50 rounded-md"
+                className="w-full px-4 py-3 bg-zinc-900 text-white text-[14px] font-semibold rounded-lg hover:bg-zinc-800 transition-all"
               >
-                Loans
-              </button>
-              <button
-                onClick={() => scrollToSection('benefits')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-green-50 rounded-md"
-              >
-                Benefits
-              </button>
-              <button
-                onClick={() => scrollToSection('how-it-works')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-green-50 rounded-md"
-              >
-                How it Works
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-green-50 rounded-md"
-              >
-                About Us
+                Apply Now
               </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }
