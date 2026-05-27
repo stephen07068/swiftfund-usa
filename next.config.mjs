@@ -6,4 +6,6 @@ const nextConfig = {
   },
 };
 
+// Trigger build
 export default nextConfig;
+
